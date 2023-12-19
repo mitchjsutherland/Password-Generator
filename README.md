@@ -9,7 +9,7 @@ An app that runs in the browser and features dynamically updated HTML and CSS, a
 
 ## Installation
 
-The page is viewable here: https://mitchjsutherland.github.io/Console-Finances/
+The page is viewable here: https://mitchjsutherland.github.io/Password-Generator/
 
 ## License
 
