@@ -94,26 +94,6 @@ function getPasswordOptions() {
   
   let passNum = parseInt(prompt("How many characters do you want in your password?", "Must be atleast 8 characters but no more than 128."))
 
-  /*
-  if (typeof passNum === "number" && passNum > 8 && passNum < 128) {
-
-    let lowChar = confirm('Should your password include Lowercase characters?');
-    let upperChar = confirm('Should your password include Uppercase characters?');
-    let numChar = confirm('Should your password include Numeric characters?');
-    let specChar = confirm('Should your password include Special characters?');
-
-  } else {
-    alert("Must be atleast 8 characters but no more than 128.");
-    let passNum = parseInt(prompt("How many characters do you want in your password?", "Must be atleast 8 characters but no more than 128."))
-  }  
-
-  */
-  
-    /*while (lowChar == false && upperChar == false && numChar == false && specChar == false) {
-      alert('Atleast one character type must be selected')
-      break;
-    }*/
-
   while (isNaN(passNum) || passNum < 8 || passNum > 128) {
     alert("Must be atleast 8 characters but no more than 128.");
     passNum = parseInt(prompt("How many characters do you want in your password? (between 8 and 128 characters)"));
@@ -141,8 +121,6 @@ function getPasswordOptions() {
   };
 }
 
-// getPasswordOptions();
-
 // Function for getting a random element from an array
 function getRandom(arr) {
   let randomEl = Math.floor(Math.random() * arr.length);
@@ -155,20 +133,38 @@ function generatePassword() {
   let passOptions = getPasswordOptions();
   let passChars = '';
 
+ /* 
   if (passOptions.lowChar) {
-    passChars += lowerCasedCharacters
+    passChars += [...lowerCasedCharacters];
   }
 
   if (passOptions.upperChar) {
-    passChars += upperCasedCharacters
+    passChars += [...upperCasedCharacters];
   }
 
   if (passOptions.numChar) {
-    passChars += numericCharacters
+    passChars += [...numericCharacters];
   }
 
   if (passOptions.specChar) {
-    passChars += specialCharacters
+    passChars += [...specialCharacters];
+  }
+  */
+
+  if (passOptions.lowChar) {
+    passChars = passChars.concat(lowerCasedCharacters);
+  }
+
+  if (passOptions.upperChar) {
+    passChars = passChars.concat(upperCasedCharacters);
+  }
+
+  if (passOptions.numChar) {
+    passChars = passChars.concat(numericCharacters);
+  }
+
+  if (passOptions.specChar) {
+    passChars = passChars.concat(specialCharacters);
   }
 
   let password = '';
@@ -180,10 +176,6 @@ function generatePassword() {
 
   return password;
 }
-
-// let passOptions = getPasswordOptions();
-// console.log(passOptions);
-
 
 
 // Get references to the #generate element
