@@ -124,7 +124,6 @@ function getPasswordOptions() {
   let numChar = confirm('Should your password include Numeric characters?');
   let specChar = confirm('Should your password include Special characters?');
     
-
   while (!lowChar && !upperChar && !numChar && !specChar) {
     alert("You must select at least one character type to include in your password.");
     let lowChar = confirm('Should your password include Lowercase characters?');
@@ -142,25 +141,61 @@ function getPasswordOptions() {
   };
 }
 
-getPasswordOptions();
+// getPasswordOptions();
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-
+  let randomEl = Math.floor(Math.random() * arr.length);
+  return arr[randomEl];
 }
 
 // Function to generate password with user input
 function generatePassword() {
 
+  let passOptions = getPasswordOptions();
+  let passChars = '';
+
+  if (passOptions.lowChar) {
+    passChars += lowerCasedCharacters
+  }
+
+  if (passOptions.upperChar) {
+    passChars += upperCasedCharacters
+  }
+
+  if (passOptions.numChar) {
+    passChars += numericCharacters
+  }
+
+  if (passOptions.lowChar) {
+    passChars += lowerCasedCharacters
+  }
+
+  if (passOptions.specChar) {
+    passChars += specialCharacters
+  }
+
+  let password = '';
+
+  for (i = 0; i < passOptions.length; i++) {
+    let randomChar = getRandom(passChars);
+    password += randomChar;
+  }
+
+  return password;
 }
+
+// let passOptions = getPasswordOptions();
+// console.log(passOptions);
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector('#password');
+  let password = generatePassword();
+  let passwordText = document.querySelector('#password');
 
   passwordText.value = password;
 }
