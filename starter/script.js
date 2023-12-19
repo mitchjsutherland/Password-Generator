@@ -89,27 +89,42 @@ var upperCasedCharacters = [
 ];
 
 
-function confirmPassChars() {
-
-
-};
-
 // Function to prompt user for password options
 function getPasswordOptions() {
   
   let passNum = parseInt(prompt("How many characters do you want in your password?", "Must be atleast 8 characters but no more than 128."))
 
+  /*
   if (typeof passNum === "number" && passNum > 8 && passNum < 128) {
 
     let lowChar = confirm('Should your password include Lowercase characters?');
     let upperChar = confirm('Should your password include Uppercase characters?');
     let numChar = confirm('Should your password include Numeric characters?');
     let specChar = confirm('Should your password include Special characters?');
-    
+
+  } else {
+    alert("Must be atleast 8 characters but no more than 128.");
+    let passNum = parseInt(prompt("How many characters do you want in your password?", "Must be atleast 8 characters but no more than 128."))
+  }  
+
+  */
+  
     /*while (lowChar == false && upperChar == false && numChar == false && specChar == false) {
       alert('Atleast one character type must be selected')
       break;
     }*/
+
+    while (isNaN(passNum) || length < 8 || length > 128) {
+      alert("Must be atleast 8 characters but no more than 128.");
+      passNum = parseInt(prompt("How many characters do you want in your password? (between 8 and 128 characters)"));
+    }
+
+
+
+
+
+
+
 
     if (lowChar || upperChar || numChar || specChar) {
       return {
@@ -121,10 +136,6 @@ function getPasswordOptions() {
       }
     }
   }
-
-  alert("Must be atleast 8 characters but no more than 128.")
-
-}
 
 getPasswordOptions();
 
