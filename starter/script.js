@@ -114,28 +114,33 @@ function getPasswordOptions() {
       break;
     }*/
 
-    while (isNaN(passNum) || length < 8 || length > 128) {
-      alert("Must be atleast 8 characters but no more than 128.");
-      passNum = parseInt(prompt("How many characters do you want in your password? (between 8 and 128 characters)"));
-    }
-
-
-
-
-
-
-
-
-    if (lowChar || upperChar || numChar || specChar) {
-      return {
-        passLength: passLength,
-        lowChar: lowChar,
-        upperChar: upperChar,
-        numChar: numChar,
-        specChar: specChar,
-      }
-    }
+  while (isNaN(passNum) || passNum < 8 || passNum > 128) {
+    alert("Must be atleast 8 characters but no more than 128.");
+    passNum = parseInt(prompt("How many characters do you want in your password? (between 8 and 128 characters)"));
   }
+
+  let lowChar = confirm('Should your password include Lowercase characters?');
+  let upperChar = confirm('Should your password include Uppercase characters?');
+  let numChar = confirm('Should your password include Numeric characters?');
+  let specChar = confirm('Should your password include Special characters?');
+    
+
+  while (!lowChar && !upperChar && !numChar && !specChar) {
+    alert("You must select at least one character type to include in your password.");
+    let lowChar = confirm('Should your password include Lowercase characters?');
+    let upperChar = confirm('Should your password include Uppercase characters?');
+    let numChar = confirm('Should your password include Numeric characters?');
+    let specChar = confirm('Should your password include Special characters?');
+  }
+
+  return {
+    passNum: passNum,
+    lowChar: lowChar,
+    upperChar: upperChar,
+    numChar: numChar,
+    specChar: specChar,
+  };
+}
 
 getPasswordOptions();
 
