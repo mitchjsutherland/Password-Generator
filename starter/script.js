@@ -167,17 +167,13 @@ function generatePassword() {
     passChars += numericCharacters
   }
 
-  if (passOptions.lowChar) {
-    passChars += lowerCasedCharacters
-  }
-
   if (passOptions.specChar) {
     passChars += specialCharacters
   }
 
   let password = '';
 
-  for (i = 0; i < passOptions.length; i++) {
+  for (i = 0; i < passOptions.passNum; i++) {
     let randomChar = getRandom(passChars);
     password += randomChar;
   }
@@ -187,6 +183,7 @@ function generatePassword() {
 
 // let passOptions = getPasswordOptions();
 // console.log(passOptions);
+
 
 
 // Get references to the #generate element
@@ -202,3 +199,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
+
